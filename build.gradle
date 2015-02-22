@@ -1,0 +1,70 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'net.saliman:gradle-cobertura-plugin:2.2.4'
+    }
+}
+
+apply plugin: 'scala'
+apply plugin: 'cobertura'
+apply plugin: 'idea'
+
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+version = '0.1'
+group = 'de.lukaseichler'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile(
+            ['org.scalatest:scalatest_2.11:3.0.0-SNAP4'],
+            ['org.assertj:assertj-core:1.7.0']
+    )
+
+    testCompile(
+            ['org.testng:testng:6.8.21'],
+            ['org.uncommons:reportng:1.1.4'],
+            ['org.mockito:mockito-all:1.10.8'],
+            // workaround for a known issue with TestNG 6.x: explicitly add Guice (Gradle will fail to run tests otherwise)
+            ['com.google.inject:guice:3.0']
+    )
+}
+
+sourceSets {
+    main {
+        runtimeClasspath = files(output.resourcesDir) + runtimeClasspath
+    }
+    test {
+        runtimeClasspath = files(output.resourcesDir) + runtimeClasspath
+    }
+}
+
+test {
+    useTestNG() {
+        suiteXmlBuilder().suite(name: 'gradle-all-tests', parallel: 'tests') {
+            test(name: 'all-tests') {
+                packages {
+                    'package'(name: 'de.lukaseichler.recurrentneuralnetwork')
+                }
+            }
+        }
+    }
+    options {
+        listeners << 'org.uncommons.reportng.HTMLReporter'
+        listeners << 'org.uncommons.reportng.JUnitXMLReporter'
+    }
+    ext.useDefaultListeners = true
+    ext.workingDirectory = 'build/'
+}
