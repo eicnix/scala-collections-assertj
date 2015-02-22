@@ -7,7 +7,7 @@ import org.assertj.core.api.Assertions
  */
 object ScalaAssertions extends Assertions {
 
-    def assertThat[V <: Iterable[_]](iterable: V): ScalaIterableCollectionAssert[V] = {
+    def assertThat[V <: Iterable[_]](iterable: V): ScalaIterableAssert[V] = {
         //new ScalaIterableCollectionAssert[V](iterable)
         null
     }

@@ -1,6 +1,6 @@
 package de.lukaseichler.scalacollectionsassertj.iterable
 
-import de.lukaseichler.scalacollectionsassertj.{ScalaIterableCollectionAssert, ScalaIterableAssertBaseTest}
+import de.lukaseichler.scalacollectionsassertj.{ScalaIterableAssert, ScalaIterableAssertBaseTest}
 import org.assertj.core.api.{TestCondition, Condition}
 import org.junit.BeforeClass
 import org.mockito.Mockito._
@@ -11,9 +11,9 @@ import scala.collection.JavaConverters._
  */
 class ScalaIterableAssert_areAtLeast_Test extends ScalaIterableAssertBaseTest{
 
-    private var condition: Condition[AnyRef] = new TestCondition[AnyRef]()
+    private val condition: Condition[AnyRef] = new TestCondition[AnyRef]()
 
-    override def invoke_api_method(): ScalaIterableCollectionAssert[AnyRef] = {
+    override def invoke_api_method(): ScalaIterableAssert[AnyRef] = {
         assertions.areAtLeast(2, condition)
     }
 

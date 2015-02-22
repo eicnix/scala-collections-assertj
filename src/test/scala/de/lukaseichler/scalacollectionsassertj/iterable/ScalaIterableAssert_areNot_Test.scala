@@ -4,18 +4,20 @@ import de.lukaseichler.scalacollectionsassertj.{ScalaIterableAssert, ScalaIterab
 import org.assertj.core.api.{TestCondition, Condition}
 import org.mockito.Mockito._
 import scala.collection.JavaConverters._
+
 /**
  * @author leichler
  */
-class ScalaIterableAssert_areAtMost_Test extends ScalaIterableAssertBaseTest{
+class ScalaIterableAssert_areNot_Test extends ScalaIterableAssertBaseTest{
 
-    protected var condition: Condition[AnyRef] = new TestCondition[AnyRef]()
+    private val condition: Condition[AnyRef] = new TestCondition[AnyRef]()
 
     override def invoke_api_method(): ScalaIterableAssert[AnyRef] = {
-        assertions.areAtMost(2, condition)
+        assertions.areNot(condition)
     }
 
     override def verify_internal_effects(): Unit = {
-        verify(iterables).assertAreAtMost(getInfo(assertions), getActual(assertions).asJava, 2, condition)
+        verify(iterables).assertAreNot(getInfo(assertions), getActual(assertions).asJava, condition)
     }
+
 }
