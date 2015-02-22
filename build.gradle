@@ -24,17 +24,20 @@ version = '0.1'
 group = 'de.lukaseichler'
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
 dependencies {
     compile(
             ['org.scalatest:scalatest_2.11:3.0.0-SNAP4'],
-            ['org.assertj:assertj-core:1.7.0']
+            ['org.assertj:assertj-core:2.0.0-SNAPSHOT'],
     )
 
+    compile(group: 'org.assertj', name: "assertj-core", version: "2.0.0-SNAPSHOT", classifier:'tests')
+
     testCompile(
-            ['org.testng:testng:6.8.21'],
+            ['junit:junit:4.12'],
             ['org.uncommons:reportng:1.1.4'],
             ['org.mockito:mockito-all:1.10.8'],
             // workaround for a known issue with TestNG 6.x: explicitly add Guice (Gradle will fail to run tests otherwise)
