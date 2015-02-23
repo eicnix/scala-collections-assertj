@@ -5,7 +5,7 @@ import java.util.Comparator
 
 import org.assertj.core.api.{AbstractAssert, Condition}
 import org.assertj.core.internal._
-import org.assertj.core.util. VisibleForTesting
+import org.assertj.core.util.VisibleForTesting
 
 import scala.collection.JavaConverters._
 
@@ -251,11 +251,6 @@ class ScalaIterableAssert[T <: AnyRef]  (actual: Iterable[T]) extends AbstractAs
 
     override def isSubsetOf(values: lang.Iterable[_ <: T]): ScalaIterableAssert[T] = {
         iterables.assertIsSubsetOf(info, actual.asJava, values)
-        myself
-    }
-
-    def isSubsetOf(values: Iterable[_ <: T]): ScalaIterableAssert[T] = {
-        iterables.assertIsSubsetOf(info, actual.asJava, values.asJava)
         myself
     }
 

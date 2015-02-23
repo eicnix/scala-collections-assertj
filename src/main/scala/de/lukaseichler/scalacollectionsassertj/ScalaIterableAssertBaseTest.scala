@@ -2,7 +2,6 @@ package de.lukaseichler.scalacollectionsassertj
 
 import org.assertj.core.api.BaseTestTemplate
 import org.assertj.core.internal.Iterables
-import org.mockito.Mockito.mock
 
 /**
  * @author Lukas Eichler
