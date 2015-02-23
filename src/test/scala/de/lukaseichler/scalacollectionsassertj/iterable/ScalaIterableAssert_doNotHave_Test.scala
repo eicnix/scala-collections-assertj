@@ -4,20 +4,20 @@ import de.lukaseichler.scalacollectionsassertj.{ScalaIterableAssert, ScalaIterab
 import org.assertj.core.api.{TestCondition, Condition}
 import org.mockito.Mockito._
 import scala.collection.JavaConverters._
-
 /**
  * @author Lukas Eichler
+
  */
-class ScalaIterableAssert_areNot_Test extends ScalaIterableAssertBaseTest{
+class ScalaIterableAssert_doNotHave_Test extends ScalaIterableAssertBaseTest{
 
     private val condition: Condition[AnyRef] = new TestCondition[AnyRef]()
 
     override def invoke_api_method(): ScalaIterableAssert[AnyRef] = {
-        assertions.areNot(condition)
+        assertions.doNotHave(condition)
     }
 
     override def verify_internal_effects(): Unit = {
-        verify(iterables).assertAreNot(getInfo(assertions), getActual(assertions).asJava, condition)
+        verify(iterables).assertDoNotHave(getInfo(assertions), getActual(assertions).asJava, condition)
     }
 
 }

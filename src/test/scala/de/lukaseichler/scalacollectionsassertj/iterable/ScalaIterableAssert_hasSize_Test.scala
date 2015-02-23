@@ -1,23 +1,23 @@
 package de.lukaseichler.scalacollectionsassertj.iterable
 
 import de.lukaseichler.scalacollectionsassertj.{ScalaIterableAssert, ScalaIterableAssertBaseTest}
-import org.assertj.core.api.{TestCondition, Condition}
 import org.mockito.Mockito._
+
 import scala.collection.JavaConverters._
 
 /**
  * @author Lukas Eichler
- */
-class ScalaIterableAssert_areNot_Test extends ScalaIterableAssertBaseTest{
 
-    private val condition: Condition[AnyRef] = new TestCondition[AnyRef]()
+ */
+class ScalaIterableAssert_hasSize_Test extends ScalaIterableAssertBaseTest{
+
 
     override def invoke_api_method(): ScalaIterableAssert[AnyRef] = {
-        assertions.areNot(condition)
+        assertions.hasSize(6)
     }
 
     override def verify_internal_effects(): Unit = {
-        verify(iterables).assertAreNot(getInfo(assertions), getActual(assertions).asJava, condition)
+        verify(iterables).assertHasSize(getInfo(assertions), getActual(assertions).asJava, 6)
     }
 
 }

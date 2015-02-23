@@ -7,7 +7,7 @@ import org.mockito.Mockito._
 import scala.collection.JavaConverters._
 
 /**
- * @author leichler
+ * @author Lukas Eichler
  */
 class ScalaIterableAssert_areAtLeast_Test extends ScalaIterableAssertBaseTest{
 

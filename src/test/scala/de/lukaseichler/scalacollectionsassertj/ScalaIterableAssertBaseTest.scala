@@ -5,7 +5,7 @@ import org.assertj.core.internal.Iterables
 import org.mockito.Mockito.mock
 
 /**
- * @author leichler
+ * @author Lukas Eichler
  */
 abstract class ScalaIterableAssertBaseTest extends BaseTestTemplate[ScalaIterableAssert[AnyRef], Iterable[AnyRef]]{
 

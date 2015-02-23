@@ -5,7 +5,7 @@ import org.assertj.core.api.{TestCondition, Condition}
 import org.mockito.Mockito._
 import scala.collection.JavaConverters._
 /**
- * @author leichler
+ * @author Lukas Eichler
  */
 class ScalaIterableAssert_areAtMost_Test extends ScalaIterableAssertBaseTest{
 

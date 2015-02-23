@@ -6,7 +6,7 @@ import org.mockito.Mockito._
 import scala.collection.JavaConverters._
 
 /**
- * @author leichler
+ * @author Lukas Eichler
  */
 class ScalaIterableAssert_areExactly_Test extends ScalaIterableAssertBaseTest{
 
